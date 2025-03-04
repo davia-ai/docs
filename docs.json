@@ -33,7 +33,7 @@
         },
         {
           "anchor": "Community",
-          "href": "https://mintlify.com/community",
+          "href": "https://join.slack.com/share/enQtODUzNDU4MzQ0NTg0Ny1lNjNkNWQ2YTAxMmJmYzA3ZTc4YzgwOGYwMTE3OWI3N2IwOTQzNzUyYWQxMjRlMGU3MjE5NTE5MzY2NDlmYzNi",
           "icon": "slack"
         }
       ]
@@ -47,7 +47,7 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:contact@davia.ai"
+        "href": "https://join.slack.com/share/enQtODUzNDU4MzQ0NTg0Ny1lNjNkNWQ2YTAxMmJmYzA3ZTc4YzgwOGYwMTE3OWI3N2IwOTQzNzUyYWQxMjRlMGU3MjE5NTE5MzY2NDlmYzNi"
       }
     ],
     "primary": {
