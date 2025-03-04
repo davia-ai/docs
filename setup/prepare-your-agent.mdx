@@ -1,0 +1,30 @@
+---
+title: "Prepare Your Agent"
+description: "Before using Davia, your agent needs to follow a few simple rules so Davia can read and connect to it correctly. "
+---
+
+## Supported Framework (for now)
+
+🔗 Currently, Davia only supports **Langgraph**.
+
+Before using Davia, make sure your agent follows the following requirements.
+
+## Requirements (current version)
+
+✅ Your agent must be a **Langgraph StateGraph**
+✅ Do not compile the graph (no `graph.compile()`)
+✅ The agent must be in a Python file that Davia can directly import (no dynamic tricks)
+✅ Your environment must have:
+
+```bash
+pip install langgraph davia
+```
+
+### Important: Do not compile your graph
+
+Davia expects to read the raw StateGraph directly.
+This will not work:
+
+```python
+graph = graph.compile()  # ❌ Don't do this
+```

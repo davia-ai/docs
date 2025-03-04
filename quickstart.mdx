@@ -1,0 +1,67 @@
+---
+title: "Quickstart"
+description: "Get your AI agent’s frontend up and running in minutes with Davia."
+---
+
+## Install Davia
+
+Run:
+
+```bash
+pip install davia
+```
+
+## Connect your agent
+
+Run Davia’s dev command, pointing to your agent’s backend graph or workflow:
+
+```bash
+davia dev [graph_path]
+```
+
+Where:
+
+* `graph_path` points to your agent definition.
+
+* This can be a **Langgraph StateGraph**, or in the future a **CrewAI Crew**, or other supported formats.
+
+**Example :**
+
+If your graph is defined in `my_project/graphs/my_agent.py`:
+
+```python
+# my_agent.py
+from langgraph.graph import StateGraph
+
+graph = StateGraph()
+```
+
+You run:
+
+```
+davia dev my_agent:graph
+```
+
+## Open Davia Platform
+
+Once the command runs, Davia launches your project on:
+
+👉 [sandbox.davia.ai](https://sandbox.davia.ai)
+
+From there, you can **design your frontend** without writing code:
+
+* Customize how responses are displayed (streaming, final output, etc.)
+
+* Add input fields (text, files, dropdowns…)
+
+* Define buttons to trigger actions
+
+* Organize everything into sections and layouts
+
+## Test your UI
+
+Your frontend is **live-connected** to your agent.
+You can test it directly inside Davia — input real data, run your agent, and see how the response flows back into the UI.
+
+That’s it!
+You’ve built a working frontend for your agent **in minutes**, without writing frontend code.

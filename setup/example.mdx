@@ -1,0 +1,56 @@
+---
+description: " This is a minimal example of a working agent that Davia can connect to.   It’s a simple chatbot — the user sends messages, the agent responds."
+---
+
+## Install required packages
+
+Before creating your agent, make sure you have these installed:
+
+```bash
+pip install langgraph langchain-openai davia
+```
+
+## Recommended file structure
+
+Create a file like:
+
+```bash
+my_agent.py             # Contains your graph and agent logic
+```
+
+## Example agent (`my_agent.py`)
+
+```python
+from langgraph.graph import StateGraph, START, END, MessagesState
+from langchain_openai import ChatOpenAI
+
+# 1. Define the state (stores the conversation history)
+class ChatState(MessagesState):
+    pass
+
+# 2. Define the model (this example uses GPT-4o)
+model = ChatOpenAI(model_name="gpt-4o")
+
+# 3. Define the agent logic (just calls the model with messages)
+def run_agent(state: ChatState):
+    messages = state["messages"]
+    response = model.invoke(messages)
+    return {"messages": messages + [response]}
+
+# 4. Build the StateGraph
+graph = StateGraph(ChatState)
+
+graph.add_node("agent", run_agent)
+graph.add_edge(START, "agent")
+graph.add_edge("agent", END)
+```
+
+## Ready to run?
+
+Once this file is in place, you can run:
+
+```bash
+davia dev my_agent:graph
+```
+
+Davia will open your project on sandbox.davia.ai, and you’ll be able to design your frontend for this chat agent.
