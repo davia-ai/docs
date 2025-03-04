@@ -1,5 +1,6 @@
 ---
-description: " This is a minimal example of a working agent that Davia can connect to.   It’s a simple chatbot — the user sends messages, the agent responds."
+description: "This is a minimal example of a working agent that Davia can connect to.   It’s a simple chatbot — the user sends messages, the agent responds."
+title: "Example — Simple Chat Agent"
 ---
 
 ## Install required packages
@@ -10,32 +11,52 @@ Before creating your agent, make sure you have these installed:
 pip install langgraph langchain-openai davia
 ```
 
-## Recommended file structure
+## Folder and file structure
 
-Create a file like:
+Organize your files like this:
 
 ```bash
-my_agent.py             # Contains your graph and agent logic
+my_agent.py             # Contains your agent logic
+.env                     # Contains your environment variables
 ```
+
+## Required environment variables
+
+Your `.env` file must contain:
+
+```bash
+OPENAI_API_KEY=insert-your-openai-api-key
+```
+
+Replace `your-openai-api-key` with your actual OpenAI API key.
 
 ## Example agent (`my_agent.py`)
 
 ```python
+from dotenv import load_dotenv
 from langgraph.graph import StateGraph, START, END, MessagesState
 from langchain_openai import ChatOpenAI
+import os
+
+# Load environment variables (including OPENAI_API_KEY)
+load_dotenv()
+
+# Fail fast if the key is missing
+if not os.getenv("OPENAI_API_KEY"):
+    raise ValueError("Missing OPENAI_API_KEY in your .env file")
 
 # 1. Define the state (stores the conversation history)
 class ChatState(MessagesState):
     pass
 
-# 2. Define the model (this example uses GPT-4o)
+# 2. Define the model (GPT-4o using the API key from .env)
 model = ChatOpenAI(model_name="gpt-4o")
 
 # 3. Define the agent logic (just calls the model with messages)
 def run_agent(state: ChatState):
     messages = state["messages"]
     response = model.invoke(messages)
-    return {"messages": messages + [response]}
+    return {"messages": response}
 
 # 4. Build the StateGraph
 graph = StateGraph(ChatState)
@@ -45,12 +66,24 @@ graph.add_edge(START, "agent")
 graph.add_edge("agent", END)
 ```
 
-## Ready to run?
+## Run Davia
 
-Once this file is in place, you can run:
+Once your files are in place and correctly set up, run on your terminal:
 
 ```bash
 davia dev my_agent:graph
 ```
 
-Davia will open your project on sandbox.davia.ai, and you’ll be able to design your frontend for this chat agent.
+Davia will open your project on [sandbox.davia.ai](https://sandbox.davia.ai/), and you’ll be able to design your frontend for this chat agent.
+
+## Set the message property
+
+Once Davia opens, you will be asked to **select where messages are stored in your agent's state**.
+
+Select the property called **`messages`** and click **Save**.
+
+This tells Davia where to find the conversation history to display in your frontend chat interface.
+
+![message selection davia start](/images/message_start.png "Select Messages")
+
+✅ That’s it — your agent is now fully connected to Davia, and **your frontend is ready to use**.

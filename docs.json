@@ -10,7 +10,7 @@
   "favicon": "/logo/dark.svg",
   "navigation": {
     "tabs": [
-      {  
+      {
         "tab": "Guides",
         "groups": [
           {
@@ -19,50 +19,29 @@
           },
           {
             "group": "Setup",
-            "pages": [
-              "setup/prepare-your-agent",
-              "setup/example"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "pages": ["api-reference/introduction"]
-          },
-          {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "pages": ["setup/prepare-your-agent", "setup/example"]
           }
         ]
       }
     ],
     "global": {
       "anchors": [
-    {
-        "anchor": "Home Page",
-        "href": "https://davia.ai/",
-        "icon": "house"
-    },
-    {
-        "anchor": "Feature Request",
-        "href": "https://feedback.davia.ai/",
-        "icon": "lightbulb"
-    },
-    {
-        "anchor": "Community",
-        "href": "https://mintlify.com/community",
-        "icon": "slack"
-    }
-]
+        {
+          "anchor": "Home Page",
+          "href": "https://davia.ai/",
+          "icon": "house"
+        },
+        {
+          "anchor": "Feature Request",
+          "href": "https://feedback.davia.ai/",
+          "icon": "lightbulb"
+        },
+        {
+          "anchor": "Community",
+          "href": "https://mintlify.com/community",
+          "icon": "slack"
+        }
+      ]
     }
   },
   "logo": {
