@@ -9,19 +9,14 @@
   },
   "favicon": "/logo/dark.svg",
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": ["introduction", "quickstart"]
-          },
-          {
-            "group": "Setup",
-            "pages": ["setup/prepare-your-agent", "setup/example"]
-          }
-        ]
+        "group": "Get Started",
+        "pages": ["introduction", "quickstart"]
+      },
+      {
+        "group": "Setup",
+        "pages": ["setup/prepare-your-agent", "setup/example"]
       }
     ],
     "global": {
